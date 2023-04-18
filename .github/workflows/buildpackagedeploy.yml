@@ -30,6 +30,6 @@ jobs:
         IMAGE_TAG: latest
       run: |
         docker build -t java-repo .
-        docker tag java-repo:latest 721523597859.dkr.ecr.us-east-1.amazonaws.com/java-repo:latest
-        docker push 721523597859.dkr.ecr.us-east-1.amazonaws.com/java-repo:latest
+        docker tag java-repo:latest java-repo/java-repo:latest
+        docker push java-repo/java-repo:latest
       
