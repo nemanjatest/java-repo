@@ -30,7 +30,7 @@ jobs:
         IMAGE_TAG: latest
       run: |
         docker tag 
-        docker build -t $ECR_REPOSITORY .
-        docker tag $ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY
+        docker build -t java-repo .
+        docker tag java-repo:latest $ECR_REGISTRY/java-repo:latest
+        docker push $ECR_REGISTRY/java-repo
       
