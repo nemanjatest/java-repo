@@ -31,6 +31,6 @@ jobs:
       run: |
         docker tag 
         docker build -t java-repo .
-        docker tag java-repo:latest $ECR_REGISTRY/java-repo:latest
+        docker tag java-repo:latest
         docker push $ECR_REGISTRY/java-repo
       
