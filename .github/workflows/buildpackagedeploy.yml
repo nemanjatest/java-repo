@@ -29,7 +29,7 @@ jobs:
         ECR_REPOSITORY: ecr-web-image
         IMAGE_TAG: latest
       run: |
-        docker build -t ecr-web-image .
-        docker tag ecr-web-image:latest 721523597859.dkr.ecr.us-east-1.amazonaws.com/ecr-web-image:latest
-        docker push 721523597859.dkr.ecr.us-east-1.amazonaws.com/ecr-web-image:latest
+        docker build -t $ECR_REPOSITORY .
+        docker tag $ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
       
