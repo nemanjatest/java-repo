@@ -26,10 +26,10 @@ jobs:
       id: build-image
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: java-repo
+        ECR_REPOSITORY: ecr-web-image
         IMAGE_TAG: latest
       run: |
-        docker build -t java-repo .
-        docker tag java-repo:latest java-repo/java-repo:latest
-        docker push java-repo/java-repo:latest
+        docker build -t ecr-web-image .
+        docker tag ecr-web-image:latest 721523597859.dkr.ecr.us-east-1.amazonaws.com/ecr-web-image:latest
+        docker push 721523597859.dkr.ecr.us-east-1.amazonaws.com/ecr-web-image:latest
       
