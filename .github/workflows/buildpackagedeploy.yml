@@ -1,0 +1,31 @@
+name: Build, package and deploy image to AWS ECR
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build-and-deploy: 
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Java environment
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+    - name: Build and package with Maven
+      run: mvn clean package
+    - name: Docker login
+      env: 
+        DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+      run:
+        docker login -u cvl023 -p $DOCKER_PASSWORD
+    - name: Docker push to DockerHub
+      env:
+        REPO: test-java
+      run: |
+        docker build -t test-java .
+        docker tag test-java:latest cvl023/test-java:latest
+        docker push cvl023/test-java
+  
